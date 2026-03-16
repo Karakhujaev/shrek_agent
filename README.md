@@ -34,7 +34,3 @@ tools.py   # File operation tools (read, edit, list)
 | `read_file` | Read file contents |
 | `edit_file` | Create or modify files |
 | `list_files` | List directory contents |
-
-## License
-
-MIT
