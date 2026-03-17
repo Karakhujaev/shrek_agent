@@ -1,36 +1,41 @@
 # ShrekAgent
 
-A CLI-based coding agent powered by Claude that performs filesystem operations through natural language.
+CLI coding agent powered by Claude with RAG-enabled documentation search.
 
-## Quick Start
+## Setup
 
 ```bash
-pip install anthropic termcolor pydantic
-export ANTHROPIC_API_KEY="your-api-key"
+# Install dependencies
+pip install anthropic termcolor pydantic weaviate-client
+
+# Start Weaviate
+docker compose up -d
+
+# Index documentation
+python index_docs.py
+
+# Set API key and run
+export ANTHROPIC_API_KEY="your-key"
 python main.py
 ```
 
 Exit with `Ctrl+D`.
 
-## Architecture
-
-The agent implements a tool-use loop:
-1. User input is sent to Claude API
-2. Claude responds with tool calls (read/edit/list)
-3. Tool results are fed back to Claude
-4. Loop continues until task completion
-
 ## Project Structure
 
 ```
-main.py    # Agent core and conversation loop
-tools.py   # File operation tools (read, edit, list)
+main.py         # Agent core and conversation loop
+tools.py        # Tool definitions (read, edit, list, search)
+rag.py          # Weaviate RAG implementation
+index_docs.py   # Document indexer
+docs/           # Documentation for RAG
 ```
 
-## Available Tools
+## Tools
 
 | Tool | Purpose |
 |------|---------|
 | `read_file` | Read file contents |
 | `edit_file` | Create or modify files |
 | `list_files` | List directory contents |
+| `search_documentation` | Search indexed docs via RAG |
