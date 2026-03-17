@@ -4,7 +4,7 @@ import anthropic
 from anthropic.types import ToolParam
 from termcolor import colored
 
-from tools import edit_file_definition, list_files_definition, read_file_definition
+from tools import edit_file_definition, list_files_definition, read_file_definition, search_documentation_definition
 
 
 class ShrekAgent:
@@ -14,6 +14,7 @@ class ShrekAgent:
             edit_file_definition,
             read_file_definition,
             list_files_definition,
+            search_documentation_definition
         ]
 
     def get_message(self):
@@ -101,8 +102,8 @@ class ShrekAgent:
         ]
 
         return self.client.messages.create(
-            model="claude-opus-4-5",
-            max_tokens=8000,
+            model="claude-haiku-4-5",
+            max_tokens=2000,
             messages=conversation,
             tools=tools,
         )
