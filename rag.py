@@ -112,15 +112,17 @@ class WeaviateRag:
             for obj in response.objects:
                 results.append(
                     {
-                        "content": obj.properties["contnet"],
+                        "content": obj.properties["content"],
                         "filename": obj.properties["filename"],
                         "chunk_id": obj.properties["chunk_id"],
                         "distance": obj.metadata.distance,
                     }
                 )
 
+            return results
+
         except Exception as e:
-            print(f"Searxh error: {e}")
+            print(f"Search error: {e}")
             raise
 
     def close(self):
