@@ -108,7 +108,7 @@ def search_documentation(input_data):
                     f"{result['content']}"
                 )
 
-        return "\n----\n".join(formatted_result)
+        return "\n----\n".join(formatted_result), None
     
     except Exception as e:
         return "", f"Search failed: {e}"
