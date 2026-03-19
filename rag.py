@@ -4,7 +4,7 @@ from weaviate.collections.classes.config import Configure
 import os
 
 class WeaviateRag:
-    def __init__(self, docs_dir="./docs", collection_name="Documentation"):
+    def __init__(self, docs_dir="./rag_testing_docs", collection_name="Documentation"):
         self.docs_dir = docs_dir
         self.collection_name = collection_name
         self.weaviate_client = weaviate.connect_to_local()
